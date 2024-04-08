@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScrollOffsetAndroidBug.MainPage">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Button
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="10"
+            Clicked="FillButton_OnClicked"
+            Text="Fill" />
+
+        <Button
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="10"
+            Clicked="EmptyButton_OnClicked"
+            Text="Empty" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="VerticalOffset: " />
+                    <Span Text="{Binding VerticalOffset, Mode=OneWay}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <CollectionView
+            x:Name="CollectionView"
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding Items}"
+            Scrolled="CollectionView_OnScrolled">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label
+                        Margin="10"
+                        FontSize="Default"
+                        HeightRequest="20"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding .}"
+                        TextColor="RoyalBlue" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>
